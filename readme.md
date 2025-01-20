@@ -30,7 +30,7 @@ Per peer.
 #### Hardware
 
 - 1 x [Espruino Original](https://www.espruino.com/Original) board (other boards possible by changing the code)
-- 1 x Ebyte E32-TTL-100 LoRa module ([datasheet](/assets/EBYTE E32 SX1278.pdf))
+- 1 x Ebyte E32-TTL-100 LoRa module ([datasheet](/assets/EBYTE%20E32%20SX1278.pdf))
 - 3 x 4.7kΩ resistors
 - Breadboard and jumper wires for prototyping
 
