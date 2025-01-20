@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+
+const { spawn } = require('child_process');
+const repl = require('repl');
+
+let [name, ...args] = process.argv.slice(2);
+
+function prompt(visible) {
+  server.setPrompt(visible ? `${name}: ` : '');
+  server.displayPrompt();
+}
+
+let espruino = spawn('espruino', args);
+
+let server = repl.start({
+  prompt: '',
+  terminal: true,
+  eval: (input, _context, _filename, callback) => {
+    let message = input.slice(0, -1).replaceAll("'", "\\'");
+
+    if (message.length) {
+      espruino.stdin.write(`send('${message}');\n`);
+      prompt(true);
+    }
+    else {
+      callback(null);
+    }
+  },
+  writer: (output) => output,
+});
+
+let connected = false;
+
+espruino.stdout.on('data', (data) => {
+  if (connected && data) {
+    prompt(false);
+    server.output.write(data);
+    prompt(true);
+  }
+  else if (data.toString() === 'Connected\n') {
+    espruino.stdin.write(`echo(false);\nname = '${name}';\n`);
+    connected = true;
+  }
+});
+
+espruino.stderr.on('data', (data) => console.error(data.toString()));
+
+setTimeout(() => {
+  if (!connected) throw Error('Timed out. Could not connect to Espruino.');
+}, 5000);
