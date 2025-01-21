@@ -54,7 +54,7 @@ Per peer.
 | VCC	        | 3.3 (or VBAT if 5V) |
 | GND	        | GND                 |
 
-Both Espruino and E32-TTL-100 have 3.3V working voltage. E32-TTL-100's VCC supports both 3.3V and 5V.
+Both Espruino and E32-TTL-100 have 3.3V working voltage, making things easy.
 
 See [this guide for more](https://mischianti.org/lora-e32-device-for-arduino-esp32-or-esp8266-specs-and-basic-usage-part-1/). The schemas for _Wemos D1 mini_, _ESP-32_ and _SAMD MKR WiFi 1010_ will also work for Espruino Original, using the pins listed above.
 
