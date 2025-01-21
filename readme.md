@@ -11,16 +11,16 @@ The transmitted data is scrambled. It's a very weak encryption, but at least it'
 #### Example
 
 ```sh
-./chat alice usbmodem48DC886433301
+./chat alice -d usbmodem48DC886433301
 ```
 ```yaml
 alice: hello?
 bob: hi there!
 alice: hey, bob!
-bob: funny we should meet here, right?
+bob: funny we should meet here
 alice: i know!
 bob: lora is the best
-alice: ▍
+alice: █
 ```
 
 ## Requirements
@@ -42,15 +42,15 @@ Per peer.
 
 ## Schema
 
-| E32 | Espruino Original   |
-|-----|---------------------|
-| M0	| GND (normal mode)   |
-| M1	| GND (normal mode)   |
-| RX	| A2 (4.7kΩ pull-up)  |
-| TX	| A3 (4.7kΩ pull-up)  |
-| AUX	| Not connected       |
-| VCC	| 3.3 (or VBAT if 5V) |
-| GND	| GND                 |
+| E32-TTL-100 | Espruino Original   |
+|-------------|---------------------|
+| M0	        | GND (normal mode)   |
+| M1	        | GND (normal mode)   |
+| RX	        | A2 (4.7kΩ pull-up)  |
+| TX	        | A3 (4.7kΩ pull-up)  |
+| AUX        	| Not connected       |
+| VCC	        | 3.3 (or VBAT if 5V) |
+| GND	        | GND                 |
 
 Both Espruino and E32-TTL-100 have 3.3V working voltage. E32-TTL-100's VCC supports both 3.3V and 5V.
 
@@ -64,7 +64,7 @@ See [this guide for more](https://mischianti.org/lora-e32-device-for-arduino-esp
 espruino --list
 ```
 
-2. Upload and save `main.js` (minified) to the Espruino board. From the project's root directory:
+2. Upload and save `main.js` to the Espruino board. From the project's root directory:
 
 ```sh
 espruino -d [device] -m main.js -e "save()"
@@ -72,18 +72,16 @@ espruino -d [device] -m main.js -e "save()"
 
 A unique substring of the device name is enough, you don't need the whole path.
 
-For some boards, you may have to also specify the board (`--board ESPRUINOBOARD`).
-
 ## Usage
 
 From the project's root directory:
 
 ```
-./chat [alias] [device]
+./chat [alias] -d [device]
 ```
 
-- `[alias]` is the alias of whoever is chatting
-- `[device]` is the name of the Espruino device (optional if only one is connected)
+- `[alias]` is the alias to use while chatting
+- `-d [device]` specifies the Espruino device (optional if only one is connected)
 
 To close the chat: `Ctrl-C`
 
