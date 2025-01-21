@@ -1,12 +1,14 @@
 # Espruino LoRa Chat
 
-_Using Espruino Original and EBYTE E32-TTL-100_
+_Using Espruino Original and Ebyte E32-TTL-100_
 
 This was cobbled together from old boards over a weekend, and it worked surprisingly well!
 
 The [chat app](/chat) is a simple CLI, written in 50 lines, to be run with Node.js on a computer that's connected to an Espruino. It communicates via [the code](/main.js) on the Espruino, another 50 lines, that chirps messages using the E32-TTL-100 LoRa module (SX1278).
 
 The transmitted data is scrambled. It's a very weak encryption, but at least it's not plaintext. It would be a nice challenge for someone to try to crack the cipher without having seen the code. It's definitely doable :)
+
+While this code is for Espruino Original and E32-TTL-100, it should be easy to adapt to other Espruino boards and LoRa modules.
 
 #### Example
 
