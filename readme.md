@@ -40,7 +40,6 @@ Per peer.
 
 - [Node.js](https://nodejs.org/) with npm
 - [Espruino Tools](https://www.npmjs.com/package/espruino) installed globally (with `-g`)
-- Relatively recent [Espruino firmware](https://www.espruino.com/Download) on the boards
 
 ## Schema
 
